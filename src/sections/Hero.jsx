@@ -1,3 +1,4 @@
+import AnimatedCounter from "../components/AnimatedCounter"
 import Button from "../components/Button"
 import Heroexperience from "../components/HeroModels/Heroexperience"
 import { words } from "../constants"
@@ -57,6 +58,7 @@ const Hero = () => {
                 </div>
             </figure>
         </div>
+        <AnimatedCounter/>
     </section>
   )
 }

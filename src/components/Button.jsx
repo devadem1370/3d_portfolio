@@ -7,6 +7,18 @@
 const Button = ({ text, className, id }) => {
     return (
       <a
+      onClick={(e)=>{
+        e.preventDefault();
+
+        const target = document.getElementById('counter');
+        if(target && id) {
+          const offset = window.innerHeight * 0.15;
+
+          const top = target.getBoundingClientRect().top + window.screenY -offset;
+
+          window.scrollTo({top, behavior: 'smooth'})
+        }
+      }}
         className={`${className ?? ""} cta-wrapper`} // Add base + extra class names
       >
         <div className="cta-button group">
