@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 
 import TitleHeader from "../components/TitleHeader";
 import ContactExperience from "../components/Models/contact/ContactExperience";
@@ -13,31 +13,31 @@ const Contact = () => {
     message: "",
   });
 
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setForm({ ...form, [name]: value });
-//   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setLoading(true); // Show loading state
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true); // Show loading state
 
-//     try {
-//       await emailjs.sendForm(
-//         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-//         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-//         formRef.current,
-//         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-//       );
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+      );
 
-//       // Reset form and stop loading
-//       setForm({ name: "", email: "", message: "" });
-//     } catch (error) {
-//       console.error("EmailJS Error:", error); // Optional: show toast
-//     } finally {
-//       setLoading(false); // Always stop loading, even on error
-//     }
-//   };
+      // Reset form and stop loading
+      setForm({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS Error:", error); // Optional: show toast
+    } finally {
+      setLoading(false); // Always stop loading, even on error
+    }
+  };
 
   return (
     <section id="contact" className="flex-center section-padding">
@@ -50,8 +50,8 @@ const Contact = () => {
           <div className="xl:col-span-5">
             <div className="flex-center card-border rounded-xl p-10">
               <form
-                // ref={formRef}
-                // onSubmit={handleSubmit}
+                ref={formRef}
+                onSubmit={handleSubmit}
                 className="w-full flex flex-col gap-7"
               >
                 <div>
@@ -61,7 +61,7 @@ const Contact = () => {
                     id="name"
                     name="name"
                     value={form.name}
-                    // onChange={handleChange}
+                    onChange={handleChange}
                     placeholder="What’s your good name?"
                     required
                   />
@@ -74,7 +74,7 @@ const Contact = () => {
                     id="email"
                     name="email"
                     value={form.email}
-                    // onChange={handleChange}
+                    onChange={handleChange}
                     placeholder="What’s your email address?"
                     required
                   />
@@ -86,7 +86,7 @@ const Contact = () => {
                     id="message"
                     name="message"
                     value={form.message}
-                    // onChange={handleChange}
+                    onChange={handleChange}
                     placeholder="How can I help you?"
                     rows="5"
                     required
